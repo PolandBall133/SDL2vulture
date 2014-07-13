@@ -17,6 +17,7 @@ namespace vulture{
         virtual size_t height() const override;
         virtual void height(size_t) override;
     protected:
+        struct Deleter{ void operator()(SDL_Window *) const; };
         typedef std::shared_ptr<SDL_Window> window_handle;
         window_handle handle;
     };
