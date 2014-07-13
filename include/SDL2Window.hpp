@@ -9,7 +9,7 @@
 namespace vulture{
     class SDL2Window : public Window{
     public:
-        SDL2Window(const string &, const Rectangle &, Window::Flags);
+        SDL2Window(const std::string &, const Rectangle &, Window::Flags);
         virtual const std::string &title() const override;
         virtual void title(const std::string &) override;
         virtual size_t width() const override;
