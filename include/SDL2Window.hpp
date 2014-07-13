@@ -4,7 +4,7 @@
 #include "Window.hpp"
 #include "Rectangle.hpp"
 
-#include "SDL.h"
+#include "SDL2/SDL.h"
 
 namespace vulture{
     class SDL2Window : public Window{
@@ -17,9 +17,12 @@ namespace vulture{
         virtual size_t height() const override;
         virtual void height(size_t) override;
     protected:
-        struct Deleter{ void operator()(SDL_Window *) const; };
         typedef std::shared_ptr<SDL_Window> window_handle;
 
-        window_handle handle;
+        window_handle _handle;
+        std::string _title;
+        Rectangle _rect;
+    private:
+        void setWindowSize();
     };
 }
