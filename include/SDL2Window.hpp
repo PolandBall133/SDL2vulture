@@ -1,6 +1,10 @@
 #pragma once
+#include <memory>
+
 #include "Window.hpp"
 #include "Rectangle.hpp"
+
+#include "SDL.h"
 
 namespace vulture{
     class SDL2Window : public Window{
@@ -12,5 +16,8 @@ namespace vulture{
         virtual void width(size_t) override;
         virtual size_t height() const override;
         virtual void height(size_t) override;
+    protected:
+        typedef std::shared_ptr<SDL_Window> window_handle;
+        window_handle handle;
     };
 }
