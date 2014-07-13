@@ -19,6 +19,7 @@ namespace vulture{
     protected:
         struct Deleter{ void operator()(SDL_Window *) const; };
         typedef std::shared_ptr<SDL_Window> window_handle;
+
         window_handle handle;
     };
 }
