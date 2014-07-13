@@ -10,7 +10,7 @@ namespace vulture{
         );
     }
 
-    const std::string &
+    const std::string
     SDL2Window::title() const{
         return _title;
     }
@@ -43,8 +43,24 @@ namespace vulture{
         setWindowSize();
     }
 
+    const Point
+    SDL2Window::position() const{
+        return _position;
+    }
+
+    void
+    SDL2Window::position(const Point &val){
+        _position = val;
+        setWindowPosition();
+    }
+
     void
     SDL2Window::setWindowSize(){
         SDL_SetWindowSize(_handle.get(), width(), height());
+    }
+
+    void
+    SDL2Window::setWindowPosition(){
+        SDL_SetWindowPosition(_handle.get(), position().x, position().y);
     }
 }
