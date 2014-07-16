@@ -55,6 +55,11 @@ namespace vulture{
         setWindowPosition();
     }
 
+    Window *
+    SDL2Window::Factory::create(const std::string &title, const Rectangle &rect, const Flags flags){
+        return new SDL2Window(title, rect, flags);
+    }
+
     void
     SDL2Window::setWindowSize(){
         SDL_SetWindowSize(_handle.get(), width(), height());
