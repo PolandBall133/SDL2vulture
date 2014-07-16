@@ -2,7 +2,7 @@
 
 namespace vulture{
     SDL2Window::SDL2Window(const std::string &title, const Rectangle &info, Window::Flags flags):
-        _rect(info)
+        Window(title, info, flags)
     {
         _handle = window_handle(
             SDL_CreateWindow(title.c_str(), info.x, info.y, info.width, info.height, flags),
