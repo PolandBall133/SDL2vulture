@@ -24,7 +24,6 @@ namespace vulture{
         window_handle _handle;
         std::string _title;
         Rectangle _rect;
-        Point _position;
     private:
         void setWindowSize();
         void setWindowPosition();
