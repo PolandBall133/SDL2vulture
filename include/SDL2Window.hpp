@@ -18,6 +18,10 @@ namespace vulture{
         virtual void height(size_t) override;
         virtual const Point position() const override;
         virtual void position(const Point &) override;
+
+        struct Factory : Window::Factory{
+            virtual Window *create(const std::string &, const Rectangle &, const Flags) override;
+        };
     protected:
         typedef std::shared_ptr<SDL_Window> window_handle;
 
