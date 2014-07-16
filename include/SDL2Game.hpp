@@ -7,5 +7,7 @@
 
 namespace vulture{
     class SDL2Game : public Game{
+    public:
+        SDL2Game();
     };
 }
