@@ -2,6 +2,6 @@
 
 namespace vulture{
     SDL2Game::SDL2Game():
-        Game(new SDL2Window::Factory())
+        Game(new SDL2Window::Factory(), new SDL2TicksProvider())
     {}
 }
