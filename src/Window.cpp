@@ -45,12 +45,13 @@ namespace vulture{
 
     const Point
     SDL2Window::position() const{
-        return _position;
+        return Point(_rect.x, _rect.y);
     }
 
     void
     SDL2Window::position(const Point &val){
-        _position = val;
+        _rect.x = val.x;
+        _rect.y = val.y;
         setWindowPosition();
     }
 
