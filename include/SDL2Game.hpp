@@ -11,5 +11,11 @@ namespace vulture{
     class SDL2Game : public Game{
     public:
         SDL2Game();
+    protected:
+        virtual void initialize() override;
+        virtual void finalize() override;
+    private:
+        void initialize_sdl2();
+        void finalize_sdl2();
     };
 }
