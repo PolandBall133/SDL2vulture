@@ -4,4 +4,16 @@ namespace vulture{
     SDL2Game::SDL2Game():
         Game(new SDL2Window::Factory(), new SDL2TicksProvider())
     {}
+
+    void
+    SDL2Game::initialize(){
+        initialize_sdl2();
+        Game::initialize();
+    }
+
+    void
+    SDL2Game::finalize(){
+        finalize_sdl2();
+        Game::finalize();
+    }
 }
