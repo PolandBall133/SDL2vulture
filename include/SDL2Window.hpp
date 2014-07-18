@@ -11,12 +11,13 @@ namespace vulture{
         friend class HandleProvider;
     public:
         SDL2Window(const std::string &, const Rectangle &, Window::Flags);
+
         virtual const std::string title() const override;
         virtual void title(const std::string &) override;
-        virtual size_t width() const override;
-        virtual void width(size_t) override;
-        virtual size_t height() const override;
-        virtual void height(size_t) override;
+
+        virtual const Size size() const override;
+        virtual void size(const Size &) override;
+
         virtual const Point position() const override;
         virtual void position(const Point &) override;
 
