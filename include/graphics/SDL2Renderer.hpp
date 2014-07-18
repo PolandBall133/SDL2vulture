@@ -1,6 +1,7 @@
 #pragma once
 
 #include "graphics/Renderer.hpp"
+#include "SDL2Window.hpp"
 
 #include "SDL2/SDL.h"
 
