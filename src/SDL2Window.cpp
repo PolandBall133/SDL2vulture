@@ -60,6 +60,11 @@ namespace vulture{
         return new SDL2Window(title, rect, flags);
     }
 
+    SDL2Window::HandleProvider::handle
+    SDL2Window::HandleProvider::provide(SDL2Window &window){
+        return handle(window._handle);
+    }
+
     void
     SDL2Window::setWindowSize(){
         SDL_SetWindowSize(_handle.get(), width(), height());
