@@ -8,6 +8,7 @@
 
 namespace vulture{
     class SDL2Window : public Window{
+        friend class HandleProvider;
     public:
         SDL2Window(const std::string &, const Rectangle &, Window::Flags);
         virtual const std::string title() const override;
@@ -22,9 +23,13 @@ namespace vulture{
         struct Factory : Window::Factory{
             virtual Window *create(const std::string &, const Rectangle &, const Flags) override;
         };
+
+        struct HandleProvider{
+            typedef std::weak_ptr<SDL_Window> handle;
+            handle provide(SDL2Window &);
+        };
     protected:
         typedef std::shared_ptr<SDL_Window> window_handle;
-
         window_handle _handle;
     private:
         void setWindowSize();
