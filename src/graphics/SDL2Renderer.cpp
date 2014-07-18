@@ -6,4 +6,16 @@ namespace vulture{
     {
 
     }
+
+    void
+    SDL2Renderer::clear(){
+    }
+
+    void
+    SDL2Renderer::present(){
+    }
+
+    void
+    SDL2Renderer::drawingColor(const Color &){
+    }
 }
