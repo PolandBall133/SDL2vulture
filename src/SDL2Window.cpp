@@ -21,25 +21,15 @@ namespace vulture{
         SDL_SetWindowTitle(_handle.get(), _title.c_str());
     }
 
-    size_t
-    SDL2Window::width() const{
-        return _rect.width;
-    }
+    const Size
+    SDL2Window::size() const{
+        return Size(_rect.width, _rect.height);
+    };
 
     void
-    SDL2Window::width(size_t val){
-        _rect.width = val;
-        setWindowSize();
-    }
-
-    size_t
-    SDL2Window::height() const{
-        return _rect.height;
-    }
-
-    void
-    SDL2Window::height(size_t val){
-        _rect.height = val;
+    SDL2Window::size(const Size &val){
+        _rect.width = val.width;
+        _rect.height = val.height;
         setWindowSize();
     }
 
@@ -67,7 +57,7 @@ namespace vulture{
 
     void
     SDL2Window::setWindowSize(){
-        SDL_SetWindowSize(_handle.get(), width(), height());
+        SDL_SetWindowSize(_handle.get(), size().width, size().height);
     }
 
     void
