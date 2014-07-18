@@ -9,6 +9,7 @@
 namespace vulture{
     class SDL2Renderer : public Renderer{
     public:
+        SDL2Renderer(std::weak_ptr<SDL2Window>);
         virtual void clear() override;
         virtual void present() override;
         virtual void drawingColor(const Color &) override;
