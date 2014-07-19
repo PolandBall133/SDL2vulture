@@ -29,4 +29,43 @@ namespace vulture{
             color.r, color.g, color.b, color.a
         );
     }
+
+    const Rectangle
+    SDL2Renderer::viewPort() const{
+        SDL_Rect r;
+        SDL_RenderGetViewport(_handle.get(), &r);
+        return Rectangle(r.x, r.y, r.w, r.h);
+    }
+
+    void
+    SDL2Renderer::viewPort(const Rectangle &val){
+        SDL_Rect r = { val.x, val.y, val.width, val.height };
+        SDL_RenderSetViewport(_handle.get(), &r);
+    }
+
+    const Vector2
+    SDL2Renderer::scale() const{
+        float sx, sy;
+        SDL_RenderGetScale(_handle.get(), &sx, &sy);
+        return Vector2((double)sx, (double)sy);
+    }
+
+    void
+    SDL2Renderer::scale(const Vector2 &val){
+        float sx = (float)val.x, sy = (float)val.y;
+        SDL_RenderSetScale(_handle.get(), sx, sy);
+    }
+
+    const Size
+    SDL2Renderer::logicalSize() const{
+        int w, h;
+        SDL_RenderGetLogicalSize(_handle.get(), &w, &h);
+        return Size((uint32_t)w, (uint32_t) h);
+    }
+
+    void
+    SDL2Renderer::logicalSize(const Size &val){
+        int w = (int)val.width, h = (int)val.height;
+        SDL_RenderSetLogicalSize(_handle.get(), w, h);
+    };
 }
