@@ -1,4 +1,4 @@
-#include "SDL2Window.hpp"
+#include "windows/SDL2Window.hpp"
 
 namespace vulture{
     SDL2Window::SDL2Window(const std::string &title, const Rectangle &info, Window::Flags flags):

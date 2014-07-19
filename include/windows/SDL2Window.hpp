@@ -1,7 +1,7 @@
 #pragma once
 #include <memory>
 
-#include "Window.hpp"
+#include "windows/Window.hpp"
 #include "Rectangle.hpp"
 
 #include "SDL2/SDL.h"

@@ -4,7 +4,7 @@
 #include "SDL2/SDL.h"
 
 #include "Game.hpp"
-#include "SDL2Window.hpp"
+#include "windows/SDL2Window.hpp"
 #include "SDL2TicksProvider.hpp"
 
 namespace vulture{
