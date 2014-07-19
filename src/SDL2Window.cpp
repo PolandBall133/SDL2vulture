@@ -12,37 +12,36 @@ namespace vulture{
 
     const std::string
     SDL2Window::title() const{
-        return _title;
+        return std::string(SDL_GetWindowTitle(_handle.get()));
     }
 
     void
     SDL2Window::title(const std::string &value){
-        _title = value;
-        SDL_SetWindowTitle(_handle.get(), _title.c_str());
+        SDL_SetWindowTitle(_handle.get(), value.c_str());
     }
 
     const Size
     SDL2Window::size() const{
-        return Size(_rect.width, _rect.height);
+        int w, h;
+        SDL_GetWindowSize(_handle.get(), &w, &h);
+        return Size(w, h);
     };
 
     void
     SDL2Window::size(const Size &val){
-        _rect.width = val.width;
-        _rect.height = val.height;
-        setWindowSize();
+        SDL_SetWindowSize(_handle.get(), (int)val.width, (int)val.height);
     }
 
     const Point
     SDL2Window::position() const{
-        return Point(_rect.x, _rect.y);
+        int x, y;
+        SDL_GetWindowPosition(_handle.get(), &x, &y);
+        return Point(x, y);
     }
 
     void
     SDL2Window::position(const Point &val){
-        _rect.x = val.x;
-        _rect.y = val.y;
-        setWindowPosition();
+        SDL_SetWindowPosition(_handle.get(), (int)val.x, (int)val.y);
     }
 
     Window *
@@ -53,15 +52,5 @@ namespace vulture{
     SDL2Window::HandleProvider::handle
     SDL2Window::HandleProvider::provide(SDL2Window &window){
         return handle(window._handle);
-    }
-
-    void
-    SDL2Window::setWindowSize(){
-        SDL_SetWindowSize(_handle.get(), size().width, size().height);
-    }
-
-    void
-    SDL2Window::setWindowPosition(){
-        SDL_SetWindowPosition(_handle.get(), position().x, position().y);
     }
 }

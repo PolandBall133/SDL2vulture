@@ -32,8 +32,5 @@ namespace vulture{
     protected:
         typedef std::shared_ptr<SDL_Window> window_handle;
         window_handle _handle;
-    private:
-        void setWindowSize();
-        void setWindowPosition();
     };
 }
