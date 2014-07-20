@@ -44,6 +44,10 @@ namespace vulture{
         SDL_SetWindowPosition(_handle.get(), (int)val.x, (int)val.y);
     }
 
+    void
+    SDL2Window::pollEvent(WindowEvent &event){
+    }
+
     Window *
     SDL2Window::Factory::create(const std::string &title, const Rectangle &rect, const Flags flags){
         return new SDL2Window(title, rect, flags);
