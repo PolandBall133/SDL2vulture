@@ -44,8 +44,9 @@ namespace vulture{
         SDL_SetWindowPosition(_handle.get(), (int)val.x, (int)val.y);
     }
 
-    void
-    SDL2Window::pollEvent(WindowEvent &event){
+    uint32_t
+    SDL2Window::ID() const{
+        return SDL_GetWindowID(_handle.get());
     }
 
     Window *
