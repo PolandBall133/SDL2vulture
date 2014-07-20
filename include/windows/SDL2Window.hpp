@@ -25,12 +25,14 @@ namespace vulture{
             virtual Window *create(const std::string &, const Rectangle &, const Flags) override;
         };
 
-        struct HandleProvider{
-            typedef std::weak_ptr<SDL_Window> handle;
-            handle provide(SDL2Window &);
-        };
+        struct HandleProvider;
     protected:
         typedef std::shared_ptr<SDL_Window> window_handle;
         window_handle _handle;
+    };
+
+    struct SDL2Window::HandleProvider{
+        typedef std::weak_ptr<SDL_Window> handle;
+        handle provide(SDL2Window &);
     };
 }
