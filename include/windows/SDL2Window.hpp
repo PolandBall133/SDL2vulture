@@ -21,6 +21,8 @@ namespace vulture{
         virtual const Point position() const override;
         virtual void position(const Point &) override;
 
+        virtual void pollEvent(WindowEvent &) override;
+
         struct Factory : Window::Factory{
             virtual Window *create(const std::string &, const Rectangle &, const Flags) override;
         };
