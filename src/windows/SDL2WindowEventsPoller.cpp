@@ -8,7 +8,7 @@ namespace vulture{
         SDL_Event sdl_event;
         while(SDL_PollEvent(&sdl_event)){
             SDL2WindowEvent event(sdl_event);
-            /* TODO: calls window methods like {onMove}? calls {handleEvent}? */
+            callWindowEvent(event, /*TODO: get id of a window from SDL_Event*; time to go to sleep*/);
         }
     }
 }
