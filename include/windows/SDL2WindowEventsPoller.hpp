@@ -5,6 +5,6 @@
 namespace vulture{
     class SDL2WindowEventsPoller : public WindowEventsPoller{
     public:
-        virtual void pollEvents() override;
+        virtual void poll() override;
     };
 }
