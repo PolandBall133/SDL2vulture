@@ -4,11 +4,11 @@
 
 namespace vulture{
     void
-    SDL2WindowEventsPoller::pollEvents(){
+    SDL2WindowEventsPoller::poll(){
         SDL_Event sdl_event;
         while(SDL_PollEvent(&sdl_event)){
             SDL2WindowEvent event(sdl_event);
-            callWindowEvent(event, /*TODO: get id of a window from SDL_Event*; time to go to sleep*/);
+            callWindowEvent(event, sdl_event.window.windowID);
         }
     }
 }
