@@ -8,7 +8,7 @@ namespace vulture{
         SDL_Event sdl_event;
         while(SDL_PollEvent(&sdl_event)){
             SDL2WindowEvent event(sdl_event);
-            callWindowEvent(event, sdl_event.window.windowID);
+            callWindowEventHandler(event, sdl_event.window.windowID);
         }
     }
 }
