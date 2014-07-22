@@ -23,6 +23,8 @@ namespace vulture{
 
         virtual uint32_t ID() const override;
 
+        virtual void onClosed(const WindowEvent::Closed &) override;
+
         struct Factory : Window::Factory{
             virtual Window *create(const std::string &, const Rectangle &, const Flags) override;
         };
