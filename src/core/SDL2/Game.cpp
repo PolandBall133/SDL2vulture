@@ -10,13 +10,13 @@ namespace vulture{
             void
             Game::initialize(){
                 initialize_sdl2();
-                Game::initialize();
+                core::Game::initialize();
             }
 
             void
             Game::finalize(){
                 finalize_sdl2();
-                Game::finalize();
+                core::Game::finalize();
             }
 
             void
