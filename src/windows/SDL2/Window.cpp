@@ -53,7 +53,7 @@ namespace vulture{
 
             void
             Window::onClosed(const windows::Event::Closed &closed){
-                Window::onClosed(closed);
+                windows::Window::onClosed(closed);
                 SDL_DestroyWindow(_handle.get());
                 _handle = nullptr;
             }
