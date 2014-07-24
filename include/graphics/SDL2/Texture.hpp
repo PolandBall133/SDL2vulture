@@ -1,6 +1,7 @@
 #pragma once
 
-#include "graphics/SDL2/Renderer.hpp"
+#include "graphics/Renderer.hpp"
+#include "graphics/Texture.hpp"
 
 #include "SDL2/SDL.h"
 
@@ -10,11 +11,14 @@
 namespace vulture{
     namespace graphics{
         namespace SDL2{
-            class Texture : public vulture::Texture{
+            class Texture : public graphics::Texture{
             public:
-                virtual void load(SDL2::Renderer &, const std::string &) override;
+                virtual void load(graphics::Renderer &, const std::string &) override;
 
                 virtual void color(const Color &) override;
+            protected:
+                typedef std::shared_ptr<SDL_Texture> texture_handle;
+                texture_handle _handle;
             };
         }
     }
