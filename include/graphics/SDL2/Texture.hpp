@@ -13,6 +13,9 @@ namespace vulture{
             class Texture : public vulture::Texture{
             public:
                 virtual void load(SDL2::Renderer &, const std::string &) override;
+
+                virtual const Color &color() const override;
+                virtual void color(const Color &) override;
             };
         }
     }
