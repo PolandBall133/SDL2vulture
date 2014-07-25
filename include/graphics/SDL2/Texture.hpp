@@ -7,6 +7,7 @@
 
 #include <memory>
 #include <string>
+#include <set>
 
 namespace vulture{
     namespace graphics{
@@ -14,6 +15,8 @@ namespace vulture{
             class Texture : public graphics::Texture<SDL2::Renderer>{
             public:
                 virtual void load(SDL2::Renderer &, const std::string &) override;
+
+                virtual const std::set<std::string> &supportedFormats() const override;
 
                 virtual void color(const Color &) override;
             protected:
