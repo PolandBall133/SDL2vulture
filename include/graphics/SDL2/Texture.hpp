@@ -14,6 +14,8 @@ namespace vulture{
         namespace SDL2{
             class Texture : public graphics::Texture<SDL2::Renderer>{
             public:
+                Texture();
+
                 virtual void load(SDL2::Renderer &, const std::string &) override;
 
                 virtual const std::set<std::string> &supportedFormats() const override;
