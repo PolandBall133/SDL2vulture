@@ -1,5 +1,6 @@
 #include "graphics/SDL2/Renderer.hpp"
 #include "graphics/SDL2/Texture.hpp"
+
 using namespace std;
 namespace vulture{
     namespace graphics{
