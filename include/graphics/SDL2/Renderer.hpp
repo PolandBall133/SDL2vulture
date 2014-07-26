@@ -11,6 +11,7 @@ namespace vulture{
     namespace graphics{
         namespace SDL2{
             class Renderer : public graphics::Renderer{
+                friend class HandleProvider;
             public:
                 Renderer(std::weak_ptr<windows::SDL2::Window>);
                 virtual void clear() override;
@@ -25,9 +26,16 @@ namespace vulture{
 
                 virtual const Size logicalSize() const override;
                 virtual void logicalSize(const Size &) override;
+
+                struct HandleProvider;
             protected:
                 typedef std::shared_ptr<SDL_Renderer> renderer_handle;
                 renderer_handle _handle;
+            };
+
+            struct Renderer::HandleProvider{
+                typedef std::weak_ptr<SDL_Renderer> handle;
+                handle provide(Renderer &);
             };
         }
     }

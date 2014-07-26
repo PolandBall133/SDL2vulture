@@ -70,6 +70,11 @@ namespace vulture{
                 int w = (int)val.width, h = (int)val.height;
                 SDL_RenderSetLogicalSize(_handle.get(), w, h);
             };
+
+            Renderer::HandleProvider::handle
+            Renderer::HandleProvider::provide(Renderer &renderer){
+                return handle(renderer._handle);
+            }
         }
     }
 }
