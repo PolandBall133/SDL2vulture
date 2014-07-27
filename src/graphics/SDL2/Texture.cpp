@@ -15,8 +15,6 @@ namespace vulture{
 
             void
             Texture::load(const string &name){
-                SDL2::Renderer::HandleProvider provider;
-                auto renderer = _renderer_handle.lock().get();
                 SDL_Surface *surface = SDL_LoadBMP(name.c_str());
                 _handle = texture_handle{
                     SDL_CreateTextureFromSurface(
