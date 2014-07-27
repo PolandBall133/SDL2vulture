@@ -6,18 +6,21 @@ using namespace std;
 namespace vulture{
     namespace graphics{
         namespace SDL2{
-            Texture::Texture(weak_ptr<SDL2::Renderer> renderer):
-                base(renderer){}
+            Texture::Texture(weak_ptr<SDL2::Renderer> renderer, const Color c):
+                base(c)
+            {
+                SDL2::Renderer::HandleProvider provider;
+                _renderer_handle = provider.provide(*renderer.lock().get());
+            }
 
             void
             Texture::load(const string &name){
                 SDL2::Renderer::HandleProvider provider;
                 auto renderer = _renderer_handle.lock().get();
-                auto hrenderer = provider.provide(*renderer);
                 SDL_Surface *surface = SDL_LoadBMP(name.c_str());
                 _handle = texture_handle{
                     SDL_CreateTextureFromSurface(
-                        hrenderer.lock().get(),
+                        _renderer_handle.lock().get(),
                         surface
                     ),
                     SDL_DestroyTexture
