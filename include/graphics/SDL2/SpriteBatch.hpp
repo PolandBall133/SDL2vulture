@@ -11,7 +11,13 @@ namespace vulture{
     namespace graphics{
         namespace SDL2{
             class SpriteBatch : public graphics::SpriteBatch{
-
+                typedef graphics::SpriteBatch base;
+            protected:
+                struct Drawer : public base::Drawer{};
+            public:
+                SpriteBatch(std::weak_ptr<SDL2::Renderer>);
+                virtual void begin() override;
+                virtual void end() override;
             };
         }
     }
