@@ -20,6 +20,9 @@ namespace vulture{
                 SpriteBatch(renderer_handle);
                 virtual void begin() override;
                 virtual void end() override;
+
+                virtual const Color backgroundColor() const override;
+                virtual void backgroundColor(const Color &) override;
             };
         }
     }
