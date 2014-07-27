@@ -14,8 +14,11 @@ namespace vulture{
                 typedef graphics::SpriteBatch base;
             protected:
                 struct Drawer : public base::Drawer{};
+
                 typedef std::weak_ptr<SDL2::Renderer> renderer_handle;
                 renderer_handle _renderer_handle;
+
+                Color _bgcolor;
             public:
                 SpriteBatch(renderer_handle);
                 virtual void begin() override;
