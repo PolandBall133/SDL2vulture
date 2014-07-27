@@ -8,7 +8,7 @@ namespace vulture{
     namespace windows{
         namespace SDL2{
             Event::Event(SDL_Event &e){
-                static const array<uint32_t, 8> sdl2_types = {
+                static const array<uint32_t, 8> sdl2_types{{
                     SDL_WINDOWEVENT_SHOWN,
                     SDL_WINDOWEVENT_EXPOSED,
                     SDL_WINDOWEVENT_MOVED,
@@ -17,8 +17,8 @@ namespace vulture{
                     SDL_WINDOWEVENT_MAXIMIZED,
                     SDL_WINDOWEVENT_RESTORED,
                     SDL_WINDOWEVENT_CLOSE
-                };
-                static const array<windows::Event::Type, 8> vulture_types = {
+                }};
+                static const array<windows::Event::Type, 8> vulture_types {{
                     windows::Event::Type::Shown,
                     windows::Event::Type::Exposed,
                     windows::Event::Type::Moved,
@@ -27,7 +27,7 @@ namespace vulture{
                     windows::Event::Type::Maximized,
                     windows::Event::Type::Restored,
                     windows::Event::Type::Closed
-                };
+                }};
                 if(e.type != SDL_WINDOWEVENT)
                     return;
 
