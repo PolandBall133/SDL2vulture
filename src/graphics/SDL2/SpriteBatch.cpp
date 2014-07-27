@@ -19,6 +19,16 @@ namespace vulture{
                 auto renderer = _renderer_handle.lock();
                 renderer->present();
             }
+
+            const Color
+            SpriteBatch::backgroundColor() const{
+                return _bgcolor;
+            }
+
+            void
+            SpriteBatch::backgroundColor(const Color &color){
+                _bgcolor = color;
+            }
         }
     }
 }
