@@ -13,6 +13,7 @@ namespace vulture{
     namespace graphics{
         namespace SDL2{
             class Texture : public graphics::Texture{
+                friend class HandleProvider;
             public:
                 Texture(std::weak_ptr<SDL2::Renderer>, const Color = Color::Transparent());
 
@@ -21,6 +22,8 @@ namespace vulture{
                 virtual const std::set<std::string> &supportedFormats() const override;
 
                 virtual void color(const Color &) override;
+
+                struct HandleProvider;
             protected:
                 typedef std::weak_ptr<SDL_Renderer> renderer_handle;
                 renderer_handle _renderer_handle;
@@ -28,6 +31,11 @@ namespace vulture{
                 texture_handle _handle;
             private:
                 typedef graphics::Texture base;
+            };
+
+            struct Texture::HandleProvider{
+                typedef std::weak_ptr<SDL_Texture> handle;
+                handle provide(SDL2::Texture &);
             };
         }
     }

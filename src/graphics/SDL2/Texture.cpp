@@ -40,6 +40,11 @@ namespace vulture{
                 SDL_SetTextureColorMod(_handle.get(), val.r, val.g, val.b);
                 SDL_SetTextureAlphaMod(_handle.get(), val.a);
             }
+
+            Texture::HandleProvider::handle
+            Texture::HandleProvider::provide(SDL2::Texture &texture){
+                return handle(texture._handle);
+            }
         }
     }
 }
