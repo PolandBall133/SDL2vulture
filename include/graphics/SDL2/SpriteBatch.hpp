@@ -10,7 +10,8 @@
 namespace vulture{
     namespace graphics{
         namespace SDL2{
-            class SpriteBatch : graphics::SpriteBatch{
+            class SpriteBatch : public graphics::SpriteBatch{
+
             };
         }
     }
