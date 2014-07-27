@@ -8,6 +8,8 @@
 #include <memory>
 
 namespace vulture{
-    namespace SDL2{
+    namespace graphics{
+        namespace SDL2{
+        }
     }
 }
