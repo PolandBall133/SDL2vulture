@@ -3,8 +3,7 @@
 namespace vulture{
     namespace graphics{
         namespace SDL2{
-            Renderer::Renderer(std::weak_ptr<windows::SDL2::Window> window):
-                Renderer(window)
+            Renderer::Renderer(std::weak_ptr<windows::SDL2::Window> window)
             {
                 windows::SDL2::Window::HandleProvider provider;
                 auto hwindow = provider.provide(*window.lock().get());
