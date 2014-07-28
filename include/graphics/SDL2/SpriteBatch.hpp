@@ -23,13 +23,16 @@ namespace vulture{
 
                 class Drawer : public base::Drawer{
                 protected:
-                    typedef std::weak_ptr<SDL_Renderer> renderer_handle;
+                    typedef std::weak_ptr<SDL2::Renderer> renderer_handle;
+                    typedef std::weak_ptr<SDL_Renderer> sdlrenderer_handle;
+
                     renderer_handle _renderer_handle;
+                    sdlrenderer_handle _sdlrenderer_handle;
                 public:
                     Drawer(renderer_handle);
                     virtual void texture(
                         SDL2::Texture &,
-                        const Vector2 &,
+                        const Rectangle &,
                         const Rectangle &,
                         double = 0.0,
                         const Point = -Point::one()
@@ -37,7 +40,7 @@ namespace vulture{
 
                     virtual void texture(
                         SDL2::Texture &,
-                        const Vector2 &,
+                        const Point &,
                         double = 0.0,
                         const Point = -Point::one()
                     ) override;
