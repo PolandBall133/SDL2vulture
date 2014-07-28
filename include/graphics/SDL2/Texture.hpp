@@ -23,8 +23,6 @@ namespace vulture{
 
                 virtual void color(const Color &) override;
 
-                virtual const Size size() override;
-
                 struct HandleProvider;
             protected:
                 typedef std::weak_ptr<SDL_Renderer> renderer_handle;
@@ -32,6 +30,7 @@ namespace vulture{
                 typedef std::shared_ptr<SDL_Texture> texture_handle;
                 texture_handle _handle;
             private:
+                void sdlQuery();
                 typedef graphics::Texture base;
             };
 
