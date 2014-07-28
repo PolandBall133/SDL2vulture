@@ -23,6 +23,8 @@ namespace vulture{
 
                 virtual void color(const Color &) override;
 
+                virtual const Size size() override;
+
                 struct HandleProvider;
             protected:
                 typedef std::weak_ptr<SDL_Renderer> renderer_handle;
