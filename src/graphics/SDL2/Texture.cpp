@@ -24,6 +24,7 @@ namespace vulture{
                     SDL_DestroyTexture
                 };
                 SDL_FreeSurface(surface);
+                sdlQuery();
             }
 
             const set<string> &
@@ -44,6 +45,13 @@ namespace vulture{
             Texture::HandleProvider::handle
             Texture::HandleProvider::provide(SDL2::Texture &texture){
                 return handle(texture._handle);
+            }
+
+            void
+            Texture::sdlQuery(){
+                int w, h;
+                SDL_QueryTexture(_handle.get(), NULL, NULL, &w, &h);
+                size(Size(w, h));
             }
         }
     }
