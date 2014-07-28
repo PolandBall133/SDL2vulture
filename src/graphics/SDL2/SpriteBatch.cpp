@@ -4,8 +4,43 @@ using namespace std;
 namespace vulture{
     namespace graphics{
         namespace SDL2{
-            SpriteBatch::SpriteBatch(renreder_handle hrenderer):
-                _renderer_handle(hrenderer){}
+            void
+            SpriteBatch::Drawer::texture(
+                SDL2::Texture &texture,
+                const Vector2 &position,
+                const Rectangle &rect,
+                double angle,
+                const Point
+            ){
+            }
+
+            void
+            SpriteBatch::Drawer::texture(
+                SDL2::Texture &texture,
+                const Vector2 &position,
+                double angle,
+                const Point
+            ){
+            }
+
+            void
+            SpriteBatch::Drawer::quad(
+                const Rectangle &rect,
+                const Color &color
+            ){
+            }
+
+            void
+            SpriteBatch::Drawer::line(
+                const Point &p1,
+                const Point &p2,
+                const Color &color
+            ){
+            }
+
+            SpriteBatch::SpriteBatch(renderer_handle renderer):
+                _renderer_handle(renderer),
+                _bgcolor(Color::White()){}
 
             void
             SpriteBatch::begin(){
