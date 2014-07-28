@@ -5,20 +5,24 @@ namespace vulture{
     namespace graphics{
         namespace SDL2{
             SpriteBatch::Drawer::Drawer(renderer_handle h):
-                _renderer_handle(h){}
+                _renderer_handle(h)
+            {
+                SDL2::Renderer::HandleProvider hp;
+                _sdlrenderer_handle = hp.provide(*h.lock().get());
+            }
 
             void
             SpriteBatch::Drawer::texture(
                 SDL2::Texture &texture,
-                const Vector2 &position,
-                const Rectangle &rect,
+                const Rectangle &src,
+                const Rectangle &dst,
                 double angle,
                 const Point point
             ){
                 bool pointProvided = point != -Point::one();
                 SDL_RendererFlip rf;
-                SDL_Rect clip = { rect.x, rect.y, rect.width, rect.height },
-                         quad = { (int)position.x, (int)position.y, clip.w, clip.h };
+                SDL_Rect clip = { src.x, src.y, src.width, src.height },
+                         quad = { dst.x, dst.y, dst.width, dst.height };
 
                 SDL_Point p;
                 if(pointProvided) p = SDL_Point{ point.x, point.y };
@@ -26,7 +30,7 @@ namespace vulture{
                 SDL2::Texture::HandleProvider hp;
 
                 SDL_RenderCopyEx(
-                    _renderer_handle.lock().get(),
+                    _sdlrenderer_handle.lock().get(),
                     hp.provide(texture).lock().get(),
                     &clip,
                     &quad,
@@ -39,10 +43,23 @@ namespace vulture{
             void
             SpriteBatch::Drawer::texture(
                 SDL2::Texture &texture,
-                const Vector2 &position,
+                const Point &pos,
                 double angle,
                 const Point point
             ){
+                this->texture(
+                    texture,
+                    Rectangle(
+                        Point::zero(),
+                        texture.size()
+                    ),
+                    Rectangle(
+                        Point(pos.x, pos.y),
+                        texture.size()
+                    ),
+                    angle,
+                    point
+                );
             }
 
             void
@@ -50,8 +67,9 @@ namespace vulture{
                 const Rectangle &rect,
                 const Color &color
             ){
-                //renderer->drawingColor(backgroundColor());
+                _renderer_handle.lock()->drawingColor(color);
                 SDL_Rect r = { rect.x, rect. y, rect.width, rect.height };
+                SDL_RenderDrawRect(_sdlrenderer_handle.lock().get(), &r);
             }
 
             void
@@ -60,14 +78,15 @@ namespace vulture{
                 const Point &p2,
                 const Color &color
             ){
+                _renderer_handle.lock()->drawingColor(color);
+                SDL_RenderDrawLine(_sdlrenderer_handle.lock().get(), p1.x, p1.y, p2.x, p2.y);
             }
 
             SpriteBatch::SpriteBatch(renderer_handle renderer):
                 _renderer_handle(renderer),
                 _bgcolor(Color::White())
             {
-                SDL2::Renderer::HandleProvider p;
-                _drawerptr = make_shared<Drawer>(p.provide(*renderer.lock().get()));
+                _drawerptr = make_shared<Drawer>(renderer);
             }
 
             void
