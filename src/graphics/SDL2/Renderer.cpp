@@ -40,7 +40,7 @@ namespace vulture{
 
             void
             Renderer::viewPort(const Rectangle &val){
-                SDL_Rect r = { val.x, val.y, val.width, val.height };
+                SDL_Rect r = { (int)val.x, (int)val.y, (int)val.width, (int)val.height };
                 SDL_RenderSetViewport(_handle.get(), &r);
             }
 

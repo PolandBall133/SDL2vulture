@@ -2,7 +2,7 @@
 #include <memory>
 
 #include "windows/Window.hpp"
-#include "Rectangle.hpp"
+#include "util/Rectangle.hpp"
 
 #include "SDL2/SDL.h"
 
