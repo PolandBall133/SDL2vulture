@@ -21,8 +21,8 @@ namespace vulture{
             ){
                 bool pointProvided = point != -Point::one();
                 SDL_RendererFlip rf;
-                SDL_Rect clip = { src.x, src.y, src.width, src.height },
-                         quad = { dst.x, dst.y, dst.width, dst.height };
+                SDL_Rect clip = { (int)src.x, (int)src.y, (int)src.width, (int)src.height },
+                         quad = { (int)dst.x, (int)dst.y, (int)dst.width, (int)dst.height };
 
                 SDL_Point p;
                 if(pointProvided) p = SDL_Point{ point.x, point.y };
@@ -68,7 +68,7 @@ namespace vulture{
                 const Color &color
             ){
                 _renderer_handle.lock()->drawingColor(color);
-                SDL_Rect r = { rect.x, rect. y, rect.width, rect.height };
+                SDL_Rect r = { (int)rect.x, (int)rect.y, (int)rect.width, (int)rect.height };
                 SDL_RenderDrawRect(_sdlrenderer_handle.lock().get(), &r);
             }
 
