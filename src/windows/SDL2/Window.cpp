@@ -51,13 +51,6 @@ namespace vulture{
                 return SDL_GetWindowID(_handle.get());
             }
 
-            void
-            Window::onClosed(const windows::Event::Closed &closed){
-                windows::Window::onClosed(closed);
-                SDL_DestroyWindow(_handle.get());
-                _handle = nullptr;
-            }
-
             Window *
             Window::Factory::create(const std::string &title, const Rectangle &rect, const Flags flags){
                 return new Window(title, rect, flags);

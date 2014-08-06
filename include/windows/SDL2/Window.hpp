@@ -3,6 +3,7 @@
 
 #include "windows/Window.hpp"
 #include "util/Rectangle.hpp"
+#include "events/WindowEvent.hpp"
 
 #include "SDL2/SDL.h"
 
@@ -24,13 +25,9 @@ namespace vulture{
                 virtual void position(const Point &) override;
 
                 virtual uint32_t ID() const override;
-
-                virtual void onClosed(const windows::Event::Closed &) override;
-
                 struct Factory : windows::Window::Factory{
                     virtual Window *create(const std::string &, const Rectangle &, const Flags) override;
                 };
-
                 struct HandleProvider;
             protected:
                 typedef std::shared_ptr<SDL_Window> window_handle;
